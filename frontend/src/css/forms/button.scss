@@ -1,0 +1,33 @@
+.button {
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
+  padding: 12px 25px;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  outline: none;
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}
+
+.button--primary {
+  background-color: $primary;
+  border-color: $primary;
+  color: #fff;
+}
+
+.button--warning {
+  background-color: $red;
+  border-color: $red;
+  color: #fff;
+}
+
+.button--stretch {
+  width: 100%;
+}
+
+.button--disabled {
+  color: $grey;
+}

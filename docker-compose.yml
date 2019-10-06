@@ -1,0 +1,61 @@
+version: '2.1'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.webpack
+      args:
+        PACKAGE_PATH: ./frontend
+        WORKING_DIR: /src/frontend
+    env_file:
+      - ./common.env
+    healthcheck:
+      test: ['CMD-SHELL', 'curl --fail http://localhost:8080 || exit 1']
+      interval: 30s
+      timeout: 5s
+      retries: 5
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+      args:
+        PACKAGE_PATH: ./api
+        WORKING_DIR: /src/api
+    env_file:
+      - ./common.env
+    volumes:
+      - .:/src
+      - /src/api/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ['npm', 'start']
+    healthcheck:
+      test: ['CMD-SHELL', 'curl --fail http://localhost:9000/health-check || exit 1']
+      interval: 30s
+      timeout: 5s
+      retries: 5
+  postgres:
+    image: postgres:9.6.1
+    env_file:
+      - ./common.env
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+      args:
+        PACKAGE_PATH: ./api
+        WORKING_DIR: /src/api
+    env_file:
+      - ./common.env
+    volumes:
+      - .:/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ['npm', 'run', 'migrate']

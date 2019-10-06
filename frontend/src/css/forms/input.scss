@@ -1,0 +1,35 @@
+.input {
+  margin: 10px 0;
+
+  input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+
+    &:focus {
+      outline: $primary auto 3px;
+    }
+  }
+
+  span {
+    color: $red;
+  }
+
+  .input-label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .input-error {
+    color: $red;
+    font-size: 12px;
+  }
+
+  input.input--disabled {
+    color: $grey;
+  }
+
+  .input-label.input--disabled {
+    color: $grey;
+  }
+}

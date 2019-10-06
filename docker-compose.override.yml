@@ -1,0 +1,41 @@
+version: '2.1'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+      args:
+        PACKAGE_PATH: ./frontend
+        WORKING_DIR: /src/frontend
+    environment:
+      HTTPS: 'true'
+      REACT_APP_ENV: development
+      DANGEROUSLY_DISABLE_HOST_CHECK: 'true'
+      BACKEND: api:9000
+      NODE_PATH: /src/frontend/src
+    env_file:
+      - ./common.env
+    volumes:
+      - .:/src
+    ports:
+      - '3000:3000'
+    healthcheck:
+      test: ['CMD-SHELL', 'curl --insecure --fail https://localhost:3000 || exit 1']
+      interval: 30s
+      timeout: 5s
+      retries: 5
+  api:
+    command: ['npm', 'start']
+    ports:
+      - '9000:9000'
+    environment:
+      - APP_ENV=development
+    healthcheck:
+      test: ['CMD-SHELL', 'curl --fail --insecure https://localhost:9000/health-check || exit 1']
+      interval: 30s
+      timeout: 5s
+      retries: 5
+  postgres:
+    ports:
+      - '5432:5432'
+  

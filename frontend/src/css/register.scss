@@ -1,0 +1,14 @@
+.register {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  .register-form {
+    width: 400px;
+
+    .button {
+      margin-top: 5px;
+    }
+  }
+}

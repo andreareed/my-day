@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:400,700&display=swap');
+@import './colors.scss';
+
+@import './forms/button.scss';
+@import './forms/input.scss';
+
+@import './register.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.form-error {
+  background-color: $red;
+  padding: 12px;
+  margin-top: 12px;
+  text-align: center;
+  color: #fff;
+}
