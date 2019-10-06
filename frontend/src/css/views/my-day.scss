@@ -1,4 +1,8 @@
 .my-day {
-  background-color: $charcoal;
-  height: 100vh;
+  min-height: 100vh;
+
+  .my-day--header {
+    display: flex;
+    justify-content: space-between;
+  }
 }

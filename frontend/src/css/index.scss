@@ -2,8 +2,9 @@
 @import './colors.scss';
 @import './utils.scss';
 
-@import './forms/button.scss';
-@import './forms/input.scss';
+@import './components/button.scss';
+@import './components/input.scss';
+@import './components/current-date.scss';
 
 @import './views/register.scss';
 @import './views/my-day.scss';
@@ -17,6 +18,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $charcoal;
+  padding: 30px 0;
 }
 
 code {
