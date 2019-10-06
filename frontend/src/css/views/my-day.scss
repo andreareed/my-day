@@ -1,5 +1,5 @@
 .my-day {
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
 
   .my-day--header {
     display: flex;

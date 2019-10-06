@@ -1,0 +1,14 @@
+.sidebar {
+  position: absolute;
+  top: 100px;
+
+  .sidebar--icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .icon {
+      padding: 20px;
+    }
+  }
+}

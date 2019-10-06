@@ -19,7 +19,7 @@ export const login = payload => ({
 
 export const verifyToken = token => ({
   type: actionConstants.VERIFY_TOKEN,
-  promise: client.post('/auth/verify-token', { token }),
+  promise: client.post('auth/verify-token', { token }),
 });
 
 export const logout = () => ({ type: actionConstants.LOGOUT_USER });
