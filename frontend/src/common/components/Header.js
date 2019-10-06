@@ -12,7 +12,7 @@ const formatAlternateTimezones = (timezones, currentTime) => {
   return `(${altTimezones.join(', ')})`;
 };
 
-class CurrentDate extends Component {
+class Header extends Component {
   static propTypes = {
     timezones: PropTypes.array,
   };
@@ -46,4 +46,4 @@ class CurrentDate extends Component {
   }
 }
 
-export default CurrentDate;
+export default Header;

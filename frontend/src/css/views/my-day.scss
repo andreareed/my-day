@@ -1,11 +1,6 @@
 .my-day {
   min-height: calc(100vh - 60px);
 
-  .my-day--header {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .my-day--greeting {
     height: 50vh;
     display: flex;
