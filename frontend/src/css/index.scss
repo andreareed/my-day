@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:400,700&display=swap');
 @import './colors.scss';
+@import './utils.scss';
 
 @import './forms/button.scss';
 @import './forms/input.scss';
 
-@import './register.scss';
+@import './views/register.scss';
+@import './views/my-day.scss';
 
 * {
   box-sizing: border-box;

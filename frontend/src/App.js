@@ -12,6 +12,7 @@ import PrimaryLayout from './Layouts/PrimaryLayout';
 
 import Register from './views/Register';
 import Login from './views/Login';
+import MyDay from './views/MyDay';
 
 class App extends Component {
   static propTypes = {
@@ -55,8 +56,9 @@ class App extends Component {
 
     return (
       <PrimaryLayout>
-        Logged In!
-        <Switch>{/* <Redirect to="/" /> */}</Switch>
+        <Switch>
+          <Route path="/" component={MyDay} />
+        </Switch>
       </PrimaryLayout>
     );
   }
