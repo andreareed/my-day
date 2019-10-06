@@ -13,6 +13,9 @@ import PrimaryLayout from './Layouts/PrimaryLayout';
 import Register from './views/Register';
 import Login from './views/Login';
 import MyDay from './views/MyDay';
+import History from './views/History';
+import Stats from './views/Stats';
+import Settings from './views/Settings';
 
 class App extends Component {
   static propTypes = {
@@ -58,6 +61,9 @@ class App extends Component {
       <PrimaryLayout>
         <Switch>
           <Route exact path="/" component={MyDay} />
+          <Route exact path="/history" component={History} />
+          <Route exact path="/stats" component={Stats} />
+          <Route exact path="/settings" component={Settings} />
           <Redirect to="/" />
         </Switch>
       </PrimaryLayout>
