@@ -5,7 +5,7 @@ import { fromJS } from 'immutable';
 import { actionConstants } from './actions';
 
 const { REGISTER_USER, LOGIN_USER, VERIFY_TOKEN, LOGOUT_USER } = actionConstants;
-const defaultState = fromJS({ data: null, loading: false, error: null });
+const defaultState = fromJS({ data: null, loading: true, error: null });
 
 const token = (state = fromJS({ data: store.get('token') || null, loading: false }), action) => {
   switch (action.type) {

@@ -4,7 +4,9 @@ import MyDay from './MyDay';
 import {} from './redux/actions';
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    user: state.user,
+  };
 };
 
 const mapDispatchToProps = dispatch => {

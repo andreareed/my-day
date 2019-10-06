@@ -57,7 +57,8 @@ class App extends Component {
     return (
       <PrimaryLayout>
         <Switch>
-          <Route path="/" component={MyDay} />
+          <Route exact path="/" component={MyDay} />
+          <Redirect to="/" />
         </Switch>
       </PrimaryLayout>
     );
@@ -67,7 +68,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user.get('data'),
-    loading: state.token.get('loading'),
+    loading: state.user.get('loading'),
   };
 };
 
