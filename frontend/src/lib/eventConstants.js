@@ -1,0 +1,8 @@
+module.exports = {
+  START_DAY: 'START_DAY',
+  END_DAY: 'END_DAY',
+  ISSUE: 'ISSUE',
+  MEETING: 'MEETING',
+  CODE_REVIEW: 'CODE_REVIEW',
+  OTHER: 'OTHER',
+};

@@ -10,11 +10,13 @@ class PrimaryLayout extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, startDay } = this.props;
     return (
       <div>
         <div className="header container">
-          <button className="button button--primary">Start Day</button>
+          <button className="button button--primary" onClick={startDay}>
+            Start Day
+          </button>
           <Header timezones={['America/Phoenix']} />
         </div>
         <div>
