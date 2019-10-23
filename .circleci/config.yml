@@ -4,34 +4,51 @@
 #
 version: 2
 jobs:
-  build:
+  api:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+      - image: circleci/node:8
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: yarn install
-
+          key: dependency-cache-{{ checksum "api/package.json" }}
+      - run:
+          name: API - Install Dependencies
+          command: npm install
+          working_directory: api
+      - run:
+          name: API - Run Linter
+          command: npm run lint -- --format junit -o reports/junit/eslint/js-lint-results.xml
+          working_directory: api
+          when: always
+      - run:
+          name: API - Run Tests
+          command: npm run test
+          working_directory: api
+          when: always
+      - store_test_results:
+          path: api/reports/junit
+      - store_artifacts:
+          path: api/reports/junit
       - save_cache:
+          key: dependency-cache-{{ checksum "api/package.json" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
-      - run: yarn test
+            - api/node_modules
+  frontend:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "frontend/package.json" }}
+      - run:
+          name: Frontend - Install Dependencies
+          command: npm install
+          working_directory: frontend
+      - run:
+          name: Frontend - Run Linter and Build
+          command: npm run build
+          working_directory: frontend
+      - save_cache:
+          key: dependency-cache-{{ checksum "frontend/package.json" }}
+          paths:
+            - frontend/node_modules
