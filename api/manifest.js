@@ -17,6 +17,7 @@ objectionSoftDelete.register(objection, {
 // Route Plugins
 const authRoutes = require('./src/application/auth/auth-routes');
 const userRoutes = require('./src/application/user/user-routes');
+const eventRoutes = require('./src/application/event/event-routes');
 
 const server = {
   routes: {
@@ -62,6 +63,7 @@ module.exports = {
       Bootstrap,
       authRoutes,
       userRoutes,
+      eventRoutes,
       {
         plugin: require('hapi-rate-limit'),
         options: {

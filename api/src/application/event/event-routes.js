@@ -12,6 +12,9 @@ const UserRoutes = {
         path: '/event',
         handler: controller.postEvent,
         config: {
+          auth: {
+            strategies: ['jwt'],
+          },
           validate: {
             payload: {
               type: Joi.string().required(),

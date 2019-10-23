@@ -1,3 +1,4 @@
+const moment = require('moment');
 const service = require('../event/event-service');
 
 module.exports = {
@@ -8,6 +9,10 @@ module.exports = {
         credentials: { user },
       },
     } = request;
+
+    if (!payload.start_time) {
+      payload.start_time = moment();
+    }
 
     return service.createEvent(payload, user.id);
   },
