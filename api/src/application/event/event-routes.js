@@ -9,7 +9,7 @@ const UserRoutes = {
     server.route([
       {
         method: 'POST',
-        path: '/event',
+        path: '/events',
         handler: controller.postEvent,
         config: {
           auth: {
@@ -18,6 +18,24 @@ const UserRoutes = {
           validate: {
             payload: {
               type: Joi.string().required(),
+            },
+          },
+        },
+      },
+      {
+        method: 'GET',
+        path: '/events',
+        handler: request => controller.getEvents,
+        config: {
+          auth: {
+            strategies: ['jwt'],
+          },
+          validate: {
+            query: {
+              userIds: Joi.string().uuid(),
+              dates: Joi.date(),
+              page: Joi.number(),
+              page_size: Joi.number(),
             },
           },
         },

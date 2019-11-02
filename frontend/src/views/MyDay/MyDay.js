@@ -8,6 +8,10 @@ class MyDay extends Component {
     user: PropTypes.instanceOf(Map),
   };
 
+  componentDidMount() {
+    this.props.fetchEvents({ dates: [moment().format('YYYY-MM-DD')] });
+  }
+
   getPersonalizedGreeting = () => {
     const { user } = this.props;
     const currentHour = parseFloat(moment().format('HH'));

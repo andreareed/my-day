@@ -16,4 +16,9 @@ module.exports = {
 
     return service.createEvent(payload, user.id);
   },
+
+  async getEvents(request) {
+    console.log('----', request);
+    return service.getEvents(request.query);
+  },
 };
