@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class Stats extends Component {
-  static propTypes = {};
+  // static propTypes = {};
 
   render() {
     return <div>Stats</div>;

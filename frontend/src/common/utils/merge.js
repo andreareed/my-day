@@ -17,4 +17,4 @@ function merge(target, source) {
   return output;
 }
 
-module.exports = merge;
+export default merge;
