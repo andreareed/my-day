@@ -20,9 +20,9 @@ const SidebarNav = ({ logout }) => {
         <Link to="/settings">
           <Icon icon="Cog" />
         </Link>
-        <a onClick={logout}>
+        <button onClick={logout}>
           <Icon icon="SignOut" />
-        </a>
+        </button>
       </div>
     </div>
   );

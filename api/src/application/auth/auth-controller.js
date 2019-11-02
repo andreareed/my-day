@@ -1,5 +1,4 @@
 const JWT = require('jsonwebtoken');
-const uuid = require('uuid');
 const Boom = require('boom');
 const bcrypt = require('bcrypt');
 const service = require('./auth-service');

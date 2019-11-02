@@ -21,7 +21,13 @@
   "scripts": {
     "start": "npm install && nodemon",
     "migrate": "knex migrate:latest",
-    "test": "jest",
+    "lint": "eslint . --max-warnings 0",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watch --verbose"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-plugin-jest": "^23.0.2",
+    "jest": "^24.9.0"
   }
 }

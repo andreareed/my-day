@@ -1,6 +1,5 @@
 const Joi = require('joi');
 
-const User = require('./User');
 const controller = require('./user-controller');
 
 const UserRoutes = {

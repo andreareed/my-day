@@ -1,10 +1,5 @@
 const bcrypt = require('bcrypt');
 const User = require('./User');
-const uuidv4 = require('uuid/v4');
-const config = require('../../../config');
-const knex = require('../../lib/knex');
-
-const MAX_VERIFICATION_ATTEMPTS = 2;
 
 const hashPassword = function(plaintextPassword) {
   return new Promise((resolve, reject) => {
