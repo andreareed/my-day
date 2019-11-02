@@ -1,0 +1,60 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  api:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "api/package.json" }}
+      - run:
+          name: API - Install Dependencies
+          command: npm install
+          working_directory: api
+      - run:
+          name: API - Run Linter
+          command: npm run lint -- --format junit -o reports/junit/eslint/js-lint-results.xml
+          working_directory: api
+          when: always
+      - run:
+          name: API - Run Tests
+          command: npm run test
+          working_directory: api
+          when: always
+      - store_test_results:
+          path: api/reports/junit
+      - store_artifacts:
+          path: api/reports/junit
+      - save_cache:
+          key: dependency-cache-{{ checksum "api/package.json" }}
+          paths:
+            - api/node_modules
+  frontend:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "frontend/package.json" }}
+      - run:
+          name: Frontend - Install Dependencies
+          command: npm install
+          working_directory: frontend
+      - run:
+          name: Frontend - Run Linter and Build
+          command: npm run build
+          working_directory: frontend
+      - save_cache:
+          key: dependency-cache-{{ checksum "frontend/package.json" }}
+          paths:
+            - frontend/node_modules
+workflows:
+  version: 2
+  build:
+    jobs:
+      - api
+      - frontend

@@ -20,6 +20,8 @@
   },
   "scripts": {
     "start": "npm install && nodemon",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "test": "jest",
+    "test:watch": "jest --watch --verbose"
   }
 }
