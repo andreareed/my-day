@@ -1,7 +1,5 @@
 const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
-const userService = require('../user/user-service');
-const uuidv4 = require('uuid/v4');
 const config = require('../../../config');
 
 module.exports = {

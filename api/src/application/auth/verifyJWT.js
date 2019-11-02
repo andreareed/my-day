@@ -27,7 +27,7 @@ const validate = async (decoded, request) => {
 
     return { isValid: true, credentials };
   } catch (e) {
-    logger.log('error', e);
+    console.error('error', e);
     return { isValid: false };
   }
 };

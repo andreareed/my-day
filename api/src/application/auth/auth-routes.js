@@ -1,4 +1,3 @@
-const boom = require('boom');
 const Joi = require('joi');
 
 const controller = require('./auth-controller');
