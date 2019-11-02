@@ -24,5 +24,8 @@
     "lint": "eslint . --max-warnings 0",
     "test": "jest",
     "test:watch": "jest --watch --verbose"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0"
   }
 }
