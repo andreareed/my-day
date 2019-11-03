@@ -25,17 +25,15 @@ const UserRoutes = {
       {
         method: 'GET',
         path: '/events',
-        handler: request => controller.getEvents,
+        handler: controller.getEvents,
         config: {
           auth: {
             strategies: ['jwt'],
           },
           validate: {
             query: {
-              userIds: Joi.string().uuid(),
-              dates: Joi.date(),
-              page: Joi.number(),
-              page_size: Joi.number(),
+              start_time: Joi.date(),
+              end_time: Joi.date(),
             },
           },
         },

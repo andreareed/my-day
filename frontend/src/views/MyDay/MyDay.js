@@ -9,7 +9,12 @@ class MyDay extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchEvents({ dates: [moment().format('YYYY-MM-DD')] });
+    this.props.fetchEvents({
+      start_time: moment()
+        .startOf('day')
+        .utc()
+        .format(),
+    });
   }
 
   getPersonalizedGreeting = () => {

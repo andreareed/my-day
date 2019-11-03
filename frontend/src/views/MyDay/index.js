@@ -3,26 +3,20 @@ import MyDay from './MyDay';
 
 import { fetchEvents } from './redux/actions';
 
-const stateProps = state => {
+const mapStateToProps = state => {
   return {
     user: state.user,
+    events: state.events.eventList,
   };
 };
 
-const dispatchProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchEvents: queryObj => dispatch(fetchEvents(queryObj)),
   };
 };
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
-  return Object.assign({}, stateProps, dispatchProps, ownProps, {
-    fetchEvents: queryObj => dispatchProps.fetchEvents({ ...queryObj, userIds: stateProps.user.getIn(['data', 'id']) }),
-  });
-}
-
 export default connect(
-  stateProps,
-  dispatchProps,
-  mergeProps
+  mapStateToProps,
+  mapDispatchToProps
 )(MyDay);

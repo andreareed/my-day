@@ -10,7 +10,7 @@ export default () => next => action => {
       ...action,
       ...{ type: `${action.type}_${status}` },
       ...data,
-      originalType: action.type,
+      prefix: action.type,
     };
 
     delete newAction.promise;
@@ -38,10 +38,7 @@ export default () => next => action => {
 
       return response
         .json()
-        .then(
-          json => next(makeAction('FAILURE', { response, json })),
-          () => next(makeAction('FAILURE', { response }))
-        );
+        .then(json => next(makeAction('FAILURE', { response, json })), () => next(makeAction('FAILURE', { response })));
     },
     error => {
       next(makeAction('ERROR', { error }));
