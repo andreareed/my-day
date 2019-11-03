@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import store from 'store2';
 import { fromJS } from 'immutable';
 import getApiReducer, { defaultState } from '../../../utils/getApiReducer';
 
@@ -13,7 +12,7 @@ const eventList = (state = defaultState, action) => {
       state = getApiReducer(GET_EVENTS)(state, action);
       break;
     case `${POST_EVENT}_SUCCESS`:
-      state = state.set('data', state.get('data').push(action.json));
+      state = state.set('data', state.get('data').push(fromJS(action.json)));
       break;
     default:
   }
