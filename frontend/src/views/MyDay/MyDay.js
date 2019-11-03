@@ -11,15 +11,6 @@ class MyDay extends Component {
     events: PropTypes.instanceOf(Map),
   };
 
-  componentDidMount() {
-    this.props.fetchEvents({
-      start_time: moment()
-        .startOf('day')
-        .utc()
-        .format(),
-    });
-  }
-
   getPersonalizedGreeting = () => {
     const { user } = this.props;
     const currentHour = parseFloat(moment().format('HH'));

@@ -9,14 +9,27 @@ class PrimaryLayout extends Component {
     children: PropTypes.node,
   };
 
+  componentDidMount() {
+    this.props.getTodaysEvents();
+  }
+
   render() {
-    const { children, startDay } = this.props;
+    const { children, startDay, currentEvent, loaded } = this.props;
+
+    if (!loaded) {
+      return 'Loading';
+    }
+
     return (
       <div>
         <div className="header container">
-          <button className="button button--primary" onClick={startDay}>
-            Start Day
-          </button>
+          {currentEvent ? (
+            <div>currentEvent</div>
+          ) : (
+            <button className="button button--primary" onClick={startDay}>
+              Start Day
+            </button>
+          )}
           <Header timezones={['America/Phoenix']} />
         </div>
         <div>

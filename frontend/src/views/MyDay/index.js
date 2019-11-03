@@ -1,19 +1,15 @@
 import { connect } from 'react-redux';
 import MyDay from './MyDay';
 
-import { fetchEvents } from './redux/actions';
-
 const mapStateToProps = state => {
   return {
     user: state.user,
-    events: state.events.eventList,
+    events: state.events.today,
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    fetchEvents: queryObj => dispatch(fetchEvents(queryObj)),
-  };
+  return {};
 };
 
 export default connect(

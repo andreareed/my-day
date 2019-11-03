@@ -1,9 +1,10 @@
+import moment from 'moment';
 import querystring from 'querystring';
 import client from '../../../client';
 
 export const actionConstants = {
   POST_EVENT: 'POST_EVENT',
-  GET_EVENTS: 'GET_EVENTS',
+  GET_TODAYS_EVENTS: 'GET_TODAYS_EVENTS',
 };
 
 export const postEvent = payload => ({
@@ -11,11 +12,16 @@ export const postEvent = payload => ({
   promise: client.post('events', payload),
 });
 
-export const fetchEvents = (params = {}) => {
-  const queryParams = params ? '?' + querystring.stringify(params) : '';
+export const getTodaysEvents = () => {
+  const queryParams = querystring.stringify({
+    start_time: moment()
+      .startOf('day')
+      .utc()
+      .format(),
+  });
 
   return {
-    type: actionConstants.GET_EVENTS,
-    promise: client.get(`events${queryParams}`),
+    type: actionConstants.GET_TODAYS_EVENTS,
+    promise: client.get(`events?${queryParams}`),
   };
 };
