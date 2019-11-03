@@ -5,6 +5,6 @@ import config from './config';
 const client = new Client({ url: config.apiUrl });
 
 client.addPlugin(jwtPlugin);
-client.setJwtTokenGetter(() => store.get('token'));
+client.setJwtTokenGetter(() => `Bearer ${store.get('token')}`);
 
 export default client;

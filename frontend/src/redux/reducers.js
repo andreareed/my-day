@@ -4,6 +4,8 @@ import { fromJS } from 'immutable';
 
 import { actionConstants } from './actions';
 
+import events from '../views/MyDay/redux/reducers';
+
 const { REGISTER_USER, LOGIN_USER, VERIFY_TOKEN, LOGOUT_USER } = actionConstants;
 const defaultState = fromJS({ data: null, loading: false, error: null });
 
@@ -52,4 +54,4 @@ const user = (state = defaultState, action) => {
   }
 };
 
-export default combineReducers({ token, user });
+export default combineReducers({ token, user, events });

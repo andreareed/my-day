@@ -27,7 +27,7 @@ const bootstrap = {
     // rewrite requests from /api/* to /*
     server.ext('onRequest', (request, h) => {
       // allow for the /api prefix
-      request.setUrl(request.url.pathname.replace(/\/api\//, '/'));
+      request.setUrl(request.url.pathname.replace(/\/api\//, '/') + request.url.search);
       return h.continue;
     });
   },
