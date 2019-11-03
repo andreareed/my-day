@@ -1,6 +1,5 @@
 const Joi = require('joi');
 
-const Event = require('./Event');
 const controller = require('./event-controller');
 
 const UserRoutes = {
